@@ -1,0 +1,32 @@
+fileFormatVersion: 2
+guid: 6be8e50b18693534a8d088b12c9e6a73
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - material: {fileID: 2100000, guid: 658e6fe543c4eb3429fc65cb91b27b7c, type: 2}
+  - wallVertical: {fileID: 1641494010946769928, guid: 8dcffe0d54f9e4040aef3c18a36ee65d,
+      type: 3}
+  - wallHorizontal: {fileID: 1641494010946769928, guid: 8dcffe0d54f9e4040aef3c18a36ee65d,
+      type: 3}
+  - wallBreakdown: {fileID: 7413407458742904279, guid: a402e9b3be34fca498905cc330e93351,
+      type: 3}
+  - demolisherWall: {fileID: 2138547158113062884, guid: 601675849cb14ff43a768e9f287ddc83,
+      type: 3}
+  - dungeonInspection: {fileID: 918513362392551550, guid: bc7445132087abd4b83f6a0d1da0ee54,
+      type: 3}
+  - nextStageStone: {instanceID: 0}
+  - nextStagePotal: {instanceID: 0}
+  - entrancePrefab: {fileID: 750317824092880083, guid: ea76b2126b0b9144ba54c3caf5478a33,
+      type: 3}
+  - exitObjPrefab: {fileID: 750317824092880083, guid: 7238bbe714701ff4da8ebe09c47851e3,
+      type: 3}
+  - bossMonsterSkin: {fileID: 8762798771691165665, guid: 700f37fa78c7fc443939c32cbf4bde34,
+      type: 3}
+  - bossMonsterCapsule: {fileID: 268162552084109652, guid: 9f8d7d48d289ca944b65c6d34b4ed4e4,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
