@@ -12,6 +12,11 @@ public class DungeonInspection : MonoBehaviour
         //boxCollider = this.transform.AddComponent<BoxCollider>();
     }
 
+    private void Start()
+    {
+        StartCoroutine(InspectionDestroy());
+    }       // Start()
+
     private void OnCollisionStay(Collision collision)
     {
         // 만든 객체(곂치는지 검하는 객체)가 아닐때엔 곂쳐도 return을 시키도록조건 제작
@@ -57,5 +62,11 @@ public class DungeonInspection : MonoBehaviour
             this.transform.tag = DungeonInspectionChecker.MAKETAGNAME;
         }
     }       // SettingTag()
+
+    IEnumerator InspectionDestroy()
+    {        
+        yield return DungeonInspectionChecker.Instance.InspectionDesTime;
+        Destroy(this.gameObject);
+    }
 
 }       // DungeonInspection Class

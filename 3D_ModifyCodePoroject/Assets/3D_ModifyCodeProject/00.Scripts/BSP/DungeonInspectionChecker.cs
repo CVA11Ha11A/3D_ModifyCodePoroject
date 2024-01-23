@@ -33,11 +33,35 @@ public class DungeonInspectionChecker : MonoBehaviour
     /// 만들 태그의 이름
     /// </summary>
     public const string MAKETAGNAME = "DungeonInspection";
+    /// <summary>
+    /// 던전 곂침 검사하는 오브젝트가 제거되는 시간 (DungeonCreator Class에서 시작할떄에 사용자가 입력한 값으로 되도록 할것임)
+    /// </summary>
+    public float inspectionDestroyTime = default;
+    /// <summary>
+    /// 던전 검사기 
+    /// </summary>
+    private WaitForSeconds inspectionDesTime = default;
+    public WaitForSeconds InspectionDesTime
+    {
+        get
+        {            
+            if(inspectionDesTime == default || inspectionDesTime == null)
+            {         
+                inspectionDesTime = new WaitForSeconds(inspectionDestroyTime);
+                return inspectionDesTime;
+            }
+            return inspectionDesTime;
+        }
+
+    }
+
 
     private void Awake()
     {
         isOverlap = false;
         isMakeTag = false;
+        inspectionDestroyTime = default;
+
     }       // Awake()
 
 
