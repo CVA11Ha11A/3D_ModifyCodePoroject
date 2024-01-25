@@ -152,9 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68cfbb59d45b6904ead04c6fdf46055b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  addSymbolName: 
-  removeSymbolName: 
-  test: TEST;TOMANY
+  addSymbolName: ISRESlut
+  removeSymbolName: TEST
 --- !u!4 &417874078
 Transform:
   m_ObjectHideFlags: 0

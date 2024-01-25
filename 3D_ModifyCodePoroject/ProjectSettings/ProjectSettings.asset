@@ -709,7 +709,7 @@ PlayerSettings:
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    Standalone: TEST;TOMANY
+    Standalone: THREE;ISRESlut
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
