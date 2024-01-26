@@ -1,20 +1,26 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.Build.Player;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
+#if UNITY_EDITOR
 public class DefineSymbolsHelper : MonoBehaviour
 {
-    [Tooltip("현재 적용되있는 디파인심볼")]
-    [SerializeField]
-    DefineSymbolsHelperStruct NowSymbol;
+    [Header("NowSettingSymbols")]
+    public List<string> nowSettingSymbolsList = new List<string>();
+
+    [Header("Setting")]
     [Tooltip("추가할 디파인심볼의 이름")]
     public string addSymbolName;
     [Tooltip("제거할 디파인 심볼의 이름")]
     public string removeSymbolName;
+
+    [HideInInspector]
+    public bool isSettingUp = false;
 
 
     /// <summary>
@@ -22,29 +28,36 @@ public class DefineSymbolsHelper : MonoBehaviour
     /// </summary>
     public void AddDefineSymbol()
     {
+        isSettingUp = true;
         // 현재 적용된 디파인 심볼을 Get
         string nowSymbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(
             EditorUserBuildSettings.selectedBuildTargetGroup);
 
         if (CheckException(addSymbolName) == true)
         {       // 입력값이 비었는지 체크
+            isSettingUp = false;
             return;
         }
         else { /*PASS*/ }
 
 
         StartAddSymbol(nowSymbols);
-       
+        ListUpdate();
+
+        
+
     }       // AddDefineSymbol()
 
     public void RemoveDefineSymbol()
     {
+        isSettingUp = true;
         // 현재 적용된 디파인 심볼을 Get
         string nowSymbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(
             EditorUserBuildSettings.selectedBuildTargetGroup);
 
         if (CheckException(removeSymbolName) == true)
         {
+            isSettingUp = false;
             return;
         }
         else { /*PASS*/ }
@@ -53,11 +66,13 @@ public class DefineSymbolsHelper : MonoBehaviour
         {   // 현재 디파인 심볼에 입력한 디파인심볼이 없을경우에만 진입            
 
             StartReMoveSymbol(nowSymbols);
+            ListUpdate();
         }
         else
         {
             Debug.Log($"! 입력하신 디파인심볼이 현재 적용상태가 아닙니다. !\n" +
                 $"! The defineSymbol you entered is not currently in application. !");
+            isSettingUp = false;
         }
 
 
@@ -146,7 +161,28 @@ public class DefineSymbolsHelper : MonoBehaviour
             return true;
         }
         return false;
-    }
+    }       // CheckException()
+
+    /// <summary>
+    /// 현재 적용된 심볼이 담긴 리스트를 업데이트하는 함수 (사용시 명시적으로 매개변수에 true를 넣어주어야함)
+    /// </summary>
+    /// <param name="_isAdd"></param>
+    /// <param name="_isRemove"></param>
+    private void ListUpdate()
+    {
+        nowSettingSymbolsList.Clear();
+
+        string nowSymbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(
+           EditorUserBuildSettings.selectedBuildTargetGroup);
+
+        string[] nowSymbolsArr = nowSymbols.Split(";");
+
+        nowSettingSymbolsList = nowSymbolsArr.ToList();
+
+        isSettingUp = false;
+    }       // ListUpdate()
 
 
 }       // DefineSymbolsHelper ClassEnd
+
+#endif
